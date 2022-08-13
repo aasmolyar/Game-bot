@@ -8,9 +8,10 @@ function game(someNumber) {
     function nestedGame() {
 
         someNumber;
+
         let guesNumber;
 
-        if (guesNumber !== undefined) {
+        if (guesNumber === undefined) {
 
             guesNumber = +prompt("Угадай число от 1 до 100");
 
@@ -35,7 +36,7 @@ function game(someNumber) {
 
             nestedGame();
 
-        } else if (guesNumber === null) {
+        } else if (guesNumber == null) {
             alert("Игра окончена");
 
         } else if (guesNumber === someNumber) {
