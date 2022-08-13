@@ -1,17 +1,11 @@
 'use strict'
 
 
-const isNumber = function (num) {
-    return !isNaN(parseFloat(num) && isFinite());
-}
-
 function game(someNumber) {
 
     let guesNumber = +prompt("Угадай число от 1 до 100");
 
     function nestedGame() {
-
-        someNumber--;
 
         console.log(someNumber, "число во влод ф-ии");
 
@@ -19,7 +13,7 @@ function game(someNumber) {
 
             alert("Загаданное число меньше");
             guesNumber = +prompt("Введите новый вариант");
-            console.log(guesNumber, "Введенное число");
+            console.log(guesNumber, "Введенное число при больше");
 
             nestedGame();
 
@@ -27,7 +21,7 @@ function game(someNumber) {
 
             alert("Загаданное число больше");
             guesNumber = +prompt("Введите новый вариант");
-            console.log(guesNumber, "Введенное число");
+            console.log(guesNumber, "Введенное число меньше");
 
             nestedGame();
 
@@ -35,7 +29,7 @@ function game(someNumber) {
 
             alert("введите число");
             guesNumber = +prompt("Введите новый вариант");
-            console.log(guesNumber, "Введенное число");
+            console.log(guesNumber, "Введенное число при !isNan");
 
             nestedGame();
 
