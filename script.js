@@ -3,33 +3,35 @@
 
 function game(someNumber) {
 
-    let guesNumber = +prompt("Угадай число от 1 до 100");
+    console.log(someNumber, "число в ф-ии game");
 
     function nestedGame() {
 
-        console.log(someNumber, "число во влод ф-ии");
+        someNumber;
+        let guesNumber;
+
+        if (guesNumber !== undefined) {
+
+            guesNumber = +prompt("Угадай число от 1 до 100");
+
+        } else { guesNumber = +prompt("Введите новый вариант"); }
+
 
         if (guesNumber > someNumber) {
 
             alert("Загаданное число меньше");
-            guesNumber = +prompt("Введите новый вариант");
-            console.log(guesNumber, "Введенное число при больше");
 
             nestedGame();
 
         } else if (guesNumber < someNumber) {
 
             alert("Загаданное число больше");
-            guesNumber = +prompt("Введите новый вариант");
-            console.log(guesNumber, "Введенное число меньше");
 
             nestedGame();
 
         } else if (!isNaN(guesNumber)) {
 
             alert("введите число");
-            guesNumber = +prompt("Введите новый вариант");
-            console.log(guesNumber, "Введенное число при !isNan");
 
             nestedGame();
 
@@ -39,7 +41,7 @@ function game(someNumber) {
         } else if (guesNumber === someNumber) {
 
             alert("Поздравляю, Вы угадали!!!");
-            console.log("Поздравляю, Вы угадали!!!");
+
         }
     }
 
