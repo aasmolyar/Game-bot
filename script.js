@@ -1,65 +1,55 @@
 'use strict'
 
-let title = prompt('Как называется ваш проект?');
-let screens = prompt('Какие типы экранов нужно разработать?');
-let screenPrice = +prompt('Сколько будет стоить данная работа?');
-let adaptive = confirm('Нужен ли адаптив на сайте?');
 
-let service1 = prompt('Какой дополнительный тип услуги нужен?');
-let servicePrice1 = +prompt('Сколько это будет стоить?');
-let service2 = prompt('Какой дополнительный тип услуги нужен?');
-let servicePrice2 = +prompt('Сколько это будет стоить?');
-
-let rollback = 10;
-let allServicePrices;
-let fullPrice;
-let servicePercentPrice;
-
-const getAllServicePrices = function () {
-    return servicePrice1 + servicePrice2;
+const isNumber = function (num) {
+    return !isNaN(parseFloat(num) && isFinite());
 }
 
-const getFullPrice = function () {
-    return screenPrice + allServicePrices;
-}
+function game(someNumber) {
 
-const getTitle = function (title) {
-    const newStr = title.trim().toLowerCase();
-    return newStr.charAt(0).toUpperCase() + newStr.slice(1);
-}
+    let guesNumber = +prompt("Угадай число от 1 до 100");
 
-const getServicePercentPrices = function (fullPrice, rollback) {
-    return fullPrice - (fullPrice * (rollback / 100));
-}
+    function nestedGame() {
 
-const showTypeOf = function (variable) {
-    console.log(variable, typeof variable);
-}
+        someNumber--;
 
-const getRollbackMessage = function (price) {
-    if (price >= 30000) {
-        return 'Даем скидку в 10%';
+        console.log(someNumber, "число во влод ф-ии");
 
-    } else if (price >= 15000 && fullPrice < 30000) {
-        return 'Даем скидку в 5%';
+        if (guesNumber > someNumber) {
 
-    } else if (price >= 0 && fullPrice < 15000) {
-        return 'Скидка не предусмотрена';
+            alert("Загаданное число меньше");
+            guesNumber = +prompt("Введите новый вариант");
+            console.log(guesNumber, "Введенное число");
 
-    } else {
-        return 'Что то пошло не так';
+            nestedGame();
+
+        } else if (guesNumber < someNumber) {
+
+            alert("Загаданное число больше");
+            guesNumber = +prompt("Введите новый вариант");
+            console.log(guesNumber, "Введенное число");
+
+            nestedGame();
+
+        } else if (!isNaN(guesNumber)) {
+
+            alert("введите число");
+            guesNumber = +prompt("Введите новый вариант");
+            console.log(guesNumber, "Введенное число");
+
+            nestedGame();
+
+        } else if (guesNumber === null) {
+            alert("Игра окончена");
+
+        } else if (guesNumber === someNumber) {
+
+            alert("Поздравляю, Вы угадали!!!");
+            console.log("Поздравляю, Вы угадали!!!");
+        }
     }
+
+    nestedGame();
 }
 
-allServicePrices = getAllServicePrices();
-fullPrice = getFullPrice();
-servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
-title = getTitle(title);
-
-showTypeOf(title);
-showTypeOf(fullPrice);
-showTypeOf(adaptive);
-
-console.log(screens.toLowerCase().split());
-console.log(getRollbackMessage(fullPrice));
-console.log(servicePercentPrice);
+game(10);
