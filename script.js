@@ -1,47 +1,46 @@
 'use strict'
 
-
 function game(someNumber) {
 
-    console.log(someNumber, "число в ф-ии game");
+    function showAlert(message, isCallGame = false) {
+
+        alert(message);
+        isCallGame && nestedGame();
+    }
+
+    let guesNumber;
 
     function nestedGame() {
 
-        someNumber;
-
-        let guesNumber;
-
         if (guesNumber === undefined) {
 
-            guesNumber = +prompt("Угадай число от 1 до 100");
+            guesNumber = prompt("Угадай число от 1 до 100");
 
-        } else { guesNumber = +prompt("Введите новый вариант"); }
+        } else { guesNumber = prompt("Введите новый вариант"); }
 
+        if (guesNumber === null) {
+            showAlert("Игра окончена");
+        }
+
+        if (isNaN(guesNumber) || guesNumber.trim() === "") {
+
+            showAlert("введите число", true);
+
+        }
+
+        guesNumber = +guesNumber;
 
         if (guesNumber > someNumber) {
 
-            alert("Загаданное число меньше");
-
-            nestedGame();
+            showAlert("Загаданное число меньше", true);
 
         } else if (guesNumber < someNumber) {
 
-            alert("Загаданное число больше");
+            showAlert("Загаданное число больше", true);
 
-            nestedGame();
+        } else {
 
-        } else if (!isNaN(guesNumber)) {
-
-            alert("введите число");
-
-            nestedGame();
-
-        } else if (guesNumber == null) {
-            alert("Игра окончена");
-
-        } else if (guesNumber === someNumber) {
-
-            alert("Поздравляю, Вы угадали!!!");
+            showAlert("Поздравляю, Вы угадали!!!");
 
         }
     }
@@ -49,4 +48,4 @@ function game(someNumber) {
     nestedGame();
 }
 
-game(10);
+game(15);
