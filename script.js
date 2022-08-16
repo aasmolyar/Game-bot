@@ -20,12 +20,12 @@ function game(someNumber) {
 
         if (guesNumber === null) {
             showAlert("Игра окончена");
+            return;
         }
 
         if (isNaN(guesNumber) || guesNumber.trim() === "") {
 
             showAlert("введите число", true);
-
         }
 
         guesNumber = +guesNumber;
@@ -41,7 +41,6 @@ function game(someNumber) {
         } else {
 
             showAlert("Поздравляю, Вы угадали!!!");
-
         }
     }
 
